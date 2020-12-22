@@ -1,0 +1,14 @@
+.l1:hover {
+    font-size: 50px;
+}
+
+.l2:active {
+    background-color: blue;
+    color: #ffffff;
+}
+
+
+.l3:focus-within {
+    color: chartreuse;
+    font-size: x-large;
+}
