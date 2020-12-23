@@ -1,0 +1,73 @@
+
+body {
+    background:url(../images/Savin-NY-Website-Background-Web.jpg) no-repeat center fixed;     
+    background-size: cover;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: white;
+    background-color: #339999;
+    font-family: Georgia,Times,Times New Roman,serif; 
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.navbar-custom {
+    margin-bottom: 80px ;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: black;
+    font-size: 18px;
+}
+
+
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    font-weight:bolder;
+}
+
+
+h1 {
+    color: #339999;
+    font-family: Georgia,Times,Times New Roman,serif;
+    font-size: 50px;
+    font-weight: bold; 
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.about-me {
+    background-color: white;
+    margin: 20px;
+}
+
+img {
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-top: 20px;
+    
+}
+
+hr {
+    margin: 30px;
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color:lightgrey; /* old IE */
+    background-color:lightgrey; /* Modern Browsers */
+}
+
+p {
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+footer {
+    border-top: 2px solid;
+    border-color: #339999;
+    border-width: 10px;
+}
