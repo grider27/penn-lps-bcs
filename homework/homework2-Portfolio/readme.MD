@@ -20,7 +20,8 @@
 
 [GitHub Repo URL](https://github.com/grider27/penn-lps-bcs/tree/main/homework/homework2-Portfolio)
 
-[GitHub Page URL](https://github.com/grider27/penn-lps-bcs/tree/main/homework/homework2-Portfolio)
+
+[GitHub Page URL](https://grider27.github.io/penn-lps-bcs/homework/homework2-Portfolio)
 
 
 ## Service used for validation for HTML
@@ -32,12 +33,32 @@
 ## User Story
 
 ```
-Test
+As a user browsing the portfolio website I should be easily able to navigate and use the website in any device (pc, tablet, mobile)
 ```
 
 ## Acceptance Criteria
 
 ```
-Test
+* Functional, deployed application
+
+* GitHub repository with README describing the project
+
+* Navbar must be consistent on each page.
+
+* Navbar on each page must contain links to Home/About, Contact, and Portfolio pages.
+
+* All links must work.
+
+* Must use semantic html.
+
+* Each page must have valid and correct HTML. (use a validation service)
+
+* Must contain your personalized information. (bio, name, images, links to social media, etc.)
+
+* Must properly utilize Bootstrap components and grid system.
+
+### Bonus
+
+* Using Bootstrap, make a sticky footer and use sub-rows and sub-columns on your portfolio site (**Hint:** Check out the Bootstrap documentation).
 
 ```
