@@ -86,3 +86,14 @@ footer {
     border-color: #339999;
     border-width: 10px;
 }
+
+.fa {
+    padding: 5px;
+    color: #339999;
+}
+
+.fa:hover {
+    opacity: 0.7;
+    color: #339999;
+    text-decoration: none;
+}
