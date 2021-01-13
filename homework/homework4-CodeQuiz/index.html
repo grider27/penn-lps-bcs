@@ -27,36 +27,58 @@
         </div>
     </div>
 
-
-        <!-- Welcome greeting and rules-->
-        <div id="welcome" class="row mt-5">
-            <div class="col text-center">
-                <h1 id="welcome-title"></h1>
-                <p id="welcome-text"></p>
-                <button id="start-quiz" class="btn btn-primary"></button>
-            </div>
+    <!-- Welcome greeting and rules-->
+    <div id="welcome" class="row mt-5">
+        <div class="col text-center">
+            <h1 id="welcome-title"></h1>
+            <p id="welcome-text"></p>
+            <button id="start-quiz" class="btn btn-primary"></button>
         </div>
+    </div>
 
-        <!-- Quiz section-->
-        <div id="questions" class="row mt-5">
-            <div class="col-sm-6 mx-auto">
-                <h1 id="questionTitle"></h1>
-                <div id="choices" class ="btn-group-vertical">
-                    <button id="choice1" class="btn btn-secondary"></button>
-                    <button id="choice2" class="btn btn-secondary"></button>
-                    <button id="choice3" class="btn btn-secondary"></button>
-                    <button id="choice4" class="btn btn-secondary"></button>
-                </div>
-                <hr>
+    <!-- Quiz section-->
+    <div id="questions" class="row mt-5">
+        <div class="col-sm-6 mx-auto">
+            <h1 id="question-title"></h1>
+            <div id="choices" class ="btn-group-vertical">
+                <button id="choice1" class="btn btn-secondary"></button>
+                <button id="choice2" class="btn btn-secondary"></button>
+                <button id="choice3" class="btn btn-secondary"></button>
+                <button id="choice4" class="btn btn-secondary"></button>
             </div>
+            <hr id="lineBreak">
+            <p id="resultCheck"></p>
         </div>
+    </div>
+
+    <!-- Final Score -->
+    <div id="scores" class="row mt-5">
+        <div class="col-sm-6 mx-auto">
+            <h1 id="score-title">All done!</h1>
+            <p id="display-score">Your final score is: <span id="final-score"></span></p>
+            <form class="form-inline">
+                <label for="player-initials">Enter Initials:  </label>
+                <input type="text" class="form-control ml-2" id="player-initials" placeholder="your initials" name="initials">
+                <button id="submit-score" class="btn btn-success mb-2">Submit</button>
+              </form>            
+        </div>
+    </div>
+
+    <!-- High scores leader board -->
+    <div id="leader-board" class="row mt-5">
+        <div class="col-sm-6 mx-auto">
+            <h1 id="leader-board-title">High Scores</h1>
+    
+        </div>
+    </div>
 
 
+<!-- time out area
+            <ul id="highScoresList"></ul>
+            <button id="go-back-btn" class="btn btn-info">Go Back</button>
+            <button id="clear-high-scores-btn" class="btn btn-info">Clear High Scores</button>    
 
-
-
-
-
+-->
 
     
     <script src="./assets/js/script.js"></script>
