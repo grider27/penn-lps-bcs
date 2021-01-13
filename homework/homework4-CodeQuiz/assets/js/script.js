@@ -1,4 +1,5 @@
 //variables for reference elements
+var highScoreEl = document.getElementById("high-scores")
 var welcomeEl = document.getElementById("welcome");
 var startQuiz = document.getElementById("start-quiz");
 
@@ -39,9 +40,8 @@ choice1.addEventListener("click",displayFinalScore); //needs to be pointed to ri
 scoreEl.addEventListener("submit",function(event){
     event.preventDefault();
     leaderBoard();
-
 });
-
+highScoreEl.addEventListener("click",leaderBoard);
 
 
 // functions
