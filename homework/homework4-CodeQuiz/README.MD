@@ -9,7 +9,7 @@
 [GitHub Repo URL](https://github.com/grider27/penn-lps-bcs/tree/main/homework/homework4-CodeQuiz)
 
 
-[GitHub Page URL](https://grider27.github.io/penn-lps-bcs/homework/homework4-CodeQuiz)
+[GitHub Page URL](https://grider27.github.io/penn-lps-bcs/homework/homework4-CodeQuiz/index.html)
 
 
 ## User Story
