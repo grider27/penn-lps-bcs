@@ -15,7 +15,7 @@ var scoreEl = document.getElementById("scores");
 var finalScore = document.getElementById("final-score");
 var saveScoreBtn = document.getElementById("submit-score");
 
-var leaderBoardEl = document.getElementById("leader-board");
+var leaderBoardEl = document.getElementById("board");
 
 
 // script variables
@@ -36,7 +36,11 @@ cont questions = [
 // event listeners
 startQuiz.addEventListener("click",initiateQuiz);
 choice1.addEventListener("click",displayFinalScore); //needs to be pointed to right function
-saveScoreBtn.addEventListener("click",leaderBoard());
+scoreEl.addEventListener("submit",function(event){
+    event.preventDefault();
+    leaderBoard();
+
+});
 
 
 
@@ -53,6 +57,7 @@ function welcome(){
     questionEl.style.display = "none";
     scoreEl.style.display = "none";
     leaderBoardEl.style.display = "none";
+
     var t = document.getElementById("welcome-title");
     var tx = document.getElementById("welcome-text");
     t.textContent = "Javascript Coding Challenge 2";
@@ -63,6 +68,9 @@ function welcome(){
 function initiateQuiz(){
     welcomeEl.style.display = "none";
     questionEl.style.display = "block";
+    scoreEl.style.display = "none";
+    leaderBoardEl.style.display = "none";
+
     lineBreak.style.display = "none";
     resultCheck.style.display = "none";
 
@@ -76,17 +84,13 @@ function initiateQuiz(){
 function displayFinalScore(){
     welcomeEl.style.display = "none";
     questionEl.style.display = "none";
-    lineBreak.style.display = "none";
-    resultCheck.style.display = "none";
     scoreEl.style.display = "block";
+    leaderBoardEl.style.display = "none";
 }
 
 function leaderBoard(){
-    leaderBoardEl.style.display = "block";
     welcomeEl.style.display = "none";
     questionEl.style.display = "none";
-    lineBreak.style.display = "none";
-    resultCheck.style.display = "none";
     scoreEl.style.display = "none";
-    
+    leaderBoardEl.style.display = "block";
 }

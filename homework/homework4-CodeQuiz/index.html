@@ -55,31 +55,33 @@
     <div id="scores" class="row mt-5">
         <div class="col-sm-6 mx-auto">
             <h1 id="score-title">All done!</h1>
-            <p id="display-score">Your final score is: <span id="final-score"></span></p>
+            <p id="display-score">Your final score is: <span id="final-score">777</span></p>
             <form class="form-inline">
                 <label for="player-initials">Enter Initials:  </label>
                 <input type="text" class="form-control ml-2" id="player-initials" placeholder="your initials" name="initials">
-                <button id="submit-score" class="btn btn-success mb-2">Submit</button>
-              </form>            
+                <button type="submit" id="submit-score" class="btn btn-success mb-2">Submit</button>
+            </form>
         </div>
     </div>
 
     <!-- High scores leader board -->
-    <div id="leader-board" class="row mt-5">
+    <div id="board" class="row mt-5">
         <div class="col-sm-6 mx-auto">
             <h1 id="leader-board-title">High Scores</h1>
-    
+            <ul id="highScoresList"></ul>
+            <button id="go-back-btn" class="btn btn-info">Go Back</button>
+            <button id="clear-high-scores-btn" class="btn btn-info">Clear High Scores</button>       
         </div>
     </div>
 
+    <!--
+<form class="form-inline">
+                <label for="player-initials">Enter Initials:  </label>
+                <input type="text" class="form-control ml-2" id="player-initials" placeholder="your initials" name="initials">
+                <button type="submit" id="submit-score" class="btn btn-success mb-2">Submit</button>
+            </form>  
 
-<!-- time out area
-            <ul id="highScoresList"></ul>
-            <button id="go-back-btn" class="btn btn-info">Go Back</button>
-            <button id="clear-high-scores-btn" class="btn btn-info">Clear High Scores</button>    
-
--->
-
+    -->
     
     <script src="./assets/js/script.js"></script>
     
