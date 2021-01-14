@@ -221,7 +221,7 @@ function displayFinalScore(){
 // save to storage
 function saveScoretoStorage(){
     if (playerInitials.value === ""){
-        alert("Please enter your initials in order to make it to the leader board");
+        alert("Please enter your initials next time or you will be anonymous on the leader board");
     }
     //var addScores = function (playerInitials, userScore) {
         var savedScores = JSON.parse(localStorage.getItem('storedScores')) || [];
