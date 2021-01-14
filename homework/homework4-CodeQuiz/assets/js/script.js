@@ -16,6 +16,7 @@ var resultCheck = document.getElementById("resultCheck");
 
 var scoreEl = document.getElementById("scores");
 var finalScore = document.getElementById("final-score");
+var playerInitials = document.getElementById("player-initials");
 var saveScoreBtn = document.getElementById("submit-score");
 
 var leaderBoardEl = document.getElementById("board");
@@ -105,7 +106,7 @@ choice3.addEventListener("click", function(){
 choice4.addEventListener("click", function(){
     checkAnswer(3);
 });
-
+saveScoreBtn.addEventListener("click",saveScoretoStorage);
 
 
 
@@ -175,6 +176,26 @@ function displayFinalScore(){
     scoreEl.style.display = "block";
     leaderBoardEl.style.display = "none";
     finalScore.textContent = userScore;
+
+}
+
+function saveScoretoStorage(){
+    //if (playerInitials === ""){
+    //    alert("Please enter your initials in order to make it to the leader board");
+    //}
+    console.log(playerInitials.value);
+    console.log(userScore);
+    //var addScores = function (playerInitials, userScore) {
+        // retrieve it (Or create a blank array if there isn't any info saved yet),
+        var savedScores = JSON.parse(localStorage.getItem('storedScores')) || [];
+        // add to it,
+        savedScores.push({playerInitals: playerInitials, userScore: userScore});
+        // then put it back.
+        localStorage.setItem('storedScores', JSON.stringify(savedScores));
+    //}
+    console.log(localStorage);
+    //leaderBoard();
+
 
 }
 
