@@ -1,13 +1,41 @@
-
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 #high-scores,
 #time-section{
     font-size: 20px;
+    color: #339999;
+    font-weight: 600;
 }
 
-.btn{
+#go-back-btn,
+#start-quiz,
+#choice1,
+#choice2,
+#choice3,
+#choice4 {
+    margin-left: 0px;
+}
+
+
+.btn,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-success:hover,
+.btn-success:focus,
+.btn-info:hover
+{
     margin-bottom:10px;
     margin-left: 20px;
     margin-top: 10px;
+    background-color: #339999;
+    border-radius: 4px;
+}
+
+button:hover {
+    opacity: 0.75;
+    background-color: #339999;
 }
 
 hr {

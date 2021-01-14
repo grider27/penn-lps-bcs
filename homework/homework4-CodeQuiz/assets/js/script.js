@@ -156,6 +156,7 @@ function welcome(){
     tx.textContent = "Try to answer the following JavaScript code related questions within the time limit of 2 minutes. Keep in mind that incorrect answers will deduct 15 seconds from your time limit. Good luck!";
     startQuiz.textContent = "Start Quiz";
     timerEl.textContent = 120;
+    tx.setAttribute("style","font-size:20px; margin-top:40px;");
 }
 
 // start quiz
@@ -204,6 +205,7 @@ function checkAnswer(pick){
         gameCompleted = true;
         displayFinalScore();
     }
+    resultCheck.setAttribute("style","font-style: italic; font-size: 30px; opacity: 0.60;");
 }
 
 // function for final score & option to save
@@ -221,8 +223,6 @@ function saveScoretoStorage(){
     if (playerInitials.value === ""){
         alert("Please enter your initials in order to make it to the leader board");
     }
-    console.log(playerInitials.value);
-    console.log(userScore);
     //var addScores = function (playerInitials, userScore) {
         var savedScores = JSON.parse(localStorage.getItem('storedScores')) || [];
         savedScores.push({playerInitals: playerInitials.value, userScore: userScore});
@@ -240,7 +240,6 @@ function leaderBoard(){
     var savedScores = localStorage.getItem("storedScores");
 
     if (savedScores != null){
-        console.log(savedScores);
         var savedScoresToList = [];
         highScoreList.innerHTML = "";
         savedScoresToList = JSON.parse(savedScores);
@@ -248,6 +247,7 @@ function leaderBoard(){
             var listResults = document.createElement("li");
             listResults.textContent = savedScoresToList[i].playerInitals+ ":  "+savedScoresToList[i].userScore;
             highScoreList.appendChild(listResults);
+            listResults.setAttribute("style","color:white; padding:5px; margin-bottom:5px; background-color:#339999; opacity: 0.75;");
         }
     }
 }
