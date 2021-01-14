@@ -247,7 +247,7 @@ function leaderBoard(){
             var listResults = document.createElement("li");
             listResults.textContent = savedScoresToList[i].playerInitals+ ":  "+savedScoresToList[i].userScore;
             highScoreList.appendChild(listResults);
-            listResults.setAttribute("style","color:white; padding:5px; margin-bottom:5px; background-color:#339999; opacity: 0.75;");
+            listResults.setAttribute("style","color:white; padding:5px; margin-bottom:5px; background-color:#339999; opacity: 0.75; border-radius: 4px;");
         }
     }
 }
