@@ -3,7 +3,7 @@ var highScoreEl = document.getElementById("high-scores")
 var welcomeEl = document.getElementById("welcome");
 var startQuiz = document.getElementById("start-quiz");
 
-var timer = document.getElementById("timer-count");
+var timerEl = document.getElementById("timer-count");
 
 var questionEl = document.getElementById("questions")
 var questionTitle = document.getElementById("question-title");
@@ -20,11 +20,16 @@ var playerInitials = document.getElementById("player-initials");
 var saveScoreBtn = document.getElementById("submit-score");
 
 var leaderBoardEl = document.getElementById("board");
+var highScoreList = document.getElementById("highScoresList");
+var clearHighScores = document.getElementById("clear-high-scores-btn");
+var goBack = document.getElementById("go-back-btn");
 
 
 // script variables
-qIndex = 0;
-userScore = 0;
+var qIndex;
+var userScore = 0;
+var timerCount;
+var gameCompleted = false;
 
 
 
@@ -108,6 +113,12 @@ choice4.addEventListener("click", function(){
 });
 saveScoreBtn.addEventListener("click",saveScoretoStorage);
 
+goBack.addEventListener("click",welcome);
+clearHighScores.addEventListener("click", function(){
+    window.localStorage.removeItem("storedScores");
+    highScoreList.innerHTML = "";
+})
+
 
 
 // main functions
@@ -115,7 +126,18 @@ saveScoreBtn.addEventListener("click",saveScoretoStorage);
 init();
 
 function init(){
-    welcome();
+    welcome();  
+}
+
+function startTimer() {
+    var timer = setInterval(function() {
+        timerCount--;
+        timerEl.textContent = timerCount;
+        if(timerCount === 0 || gameCompleted){
+            clearInterval(timer);
+            displayFinalScore();
+        }
+    },1000);
 }
 
 function welcome(){
@@ -123,12 +145,16 @@ function welcome(){
     questionEl.style.display = "none";
     scoreEl.style.display = "none";
     leaderBoardEl.style.display = "none";
+    if (highScoreEl.style.display === "none"){
+        highScoreEl.style.display = "block";
+    };
 
     var t = document.getElementById("welcome-title");
     var tx = document.getElementById("welcome-text");
-    t.textContent = "Javascript Coding Challenge 2";
+    t.textContent = "Javascript Coding Challenge";
     tx.textContent = "get ready";
     startQuiz.textContent = "Start Quiz";
+    timerEl.textContent = 120;
 }
 
 function initiateQuiz(){
@@ -139,7 +165,11 @@ function initiateQuiz(){
 
     lineBreak.style.display = "none";
     resultCheck.style.display = "none";
+    qIndex = 0;
+    timerCount = 120;
+    gameCompleted = false;
     startquestions();
+    startTimer();
 }
 
 function startquestions(){
@@ -165,6 +195,7 @@ function checkAnswer(pick){
     if (qIndex < questions.length){
         startquestions();
     } else {
+        gameCompleted = true;
         displayFinalScore();
     }
 }
@@ -180,23 +211,16 @@ function displayFinalScore(){
 }
 
 function saveScoretoStorage(){
-    //if (playerInitials === ""){
-    //    alert("Please enter your initials in order to make it to the leader board");
-    //}
+    if (playerInitials.value === ""){
+        alert("Please enter your initials in order to make it to the leader board");
+    }
     console.log(playerInitials.value);
     console.log(userScore);
     //var addScores = function (playerInitials, userScore) {
-        // retrieve it (Or create a blank array if there isn't any info saved yet),
         var savedScores = JSON.parse(localStorage.getItem('storedScores')) || [];
-        // add to it,
-        savedScores.push({playerInitals: playerInitials, userScore: userScore});
-        // then put it back.
+        savedScores.push({playerInitals: playerInitials.value, userScore: userScore});
         localStorage.setItem('storedScores', JSON.stringify(savedScores));
     //}
-    console.log(localStorage);
-    //leaderBoard();
-
-
 }
 
 function leaderBoard(){
@@ -204,4 +228,17 @@ function leaderBoard(){
     questionEl.style.display = "none";
     scoreEl.style.display = "none";
     leaderBoardEl.style.display = "block";
+    highScoreEl.style.display = "none";
+
+    var savedScores = localStorage.getItem("storedScores");
+
+    if (savedScores != null){
+        console.log(savedScores);
+        savedScoresToList = JSON.parse(savedScores);
+        for (i=0; i< savedScoresToList.length; i++){
+            var listResults = document.createElement("li");
+            listResults.textContent = savedScoresToList[i].playerInitals+ ":  "+savedScoresToList[i].userScore;
+            highScoreList.appendChild(listResults);
+        }
+    }
 }
