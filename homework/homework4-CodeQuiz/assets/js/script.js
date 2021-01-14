@@ -27,7 +27,7 @@ var goBack = document.getElementById("go-back-btn");
 
 // script variables
 var qIndex;
-var userScore = 0;
+var userScore;
 var timerCount;
 var gameCompleted = false;
 
@@ -167,6 +167,7 @@ function initiateQuiz(){
     resultCheck.style.display = "none";
     qIndex = 0;
     timerCount = 120;
+    userScore = 0;
     gameCompleted = false;
     startquestions();
     startTimer();
