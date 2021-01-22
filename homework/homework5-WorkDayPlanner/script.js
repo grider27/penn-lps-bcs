@@ -40,7 +40,6 @@ $.each(hrToDisplay,function(i, val){
         else {
             inputCol.addClass('present');
         }
-
     inputCol.attr('placeholder','Click here to enter')
     hourRow.append(inputCol);
 
@@ -53,5 +52,20 @@ $.each(hrToDisplay,function(i, val){
     hourRow.appendTo('.container');
 });
 
+$(".saveBtn").on("click", function() {
+    var calHr = $(this).parent(".row").attr("hour-slot");
+    var calItem = $(this).siblings('.textarea').val(); 
+    console.log(calHr);
+    console.log(calItem);
+
+    var savedPlanner = JSON.parse(localStorage.getItem('storedPlanner')) || [];
+    savedPlanner.push({hr: calHr, appt: calItem});
+    localStorage.setItem('storedPlanner', JSON.stringify(savedPlanner));
 
 });
+
+
+console.log(localStorage.getItem("storedPlanner"));
+
+});
+
