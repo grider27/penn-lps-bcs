@@ -54,8 +54,8 @@ $(document).ready(function () {
     });
 
     // save button on click action
-    $(".saveBtn").on("click", function () {
-        var calHr = $(this).parent(".row").attr("hour-slot");
+    $('.saveBtn').on('click', function () {
+        var calHr = $(this).parent('.row').attr('hour-slot');
         var calItem = $(this).siblings('.textarea').val();
         var dateOf = moment().format('L');
         var savedPlanner = JSON.parse(localStorage.getItem('storedPlanner')) || [];
@@ -67,12 +67,12 @@ $(document).ready(function () {
 
 
     // on load results from previously stored
-    var prevPlanner = localStorage.getItem("storedPlanner");
+    var prevPlanner = localStorage.getItem('storedPlanner');
     if (prevPlanner != null) {
         prevPlannerResults = JSON.parse(prevPlanner);
         $('.row').each(function () {
-            var hrSlot = $(this).attr("hour-slot");
-            var appt = $(this).children(".textarea");
+            var hrSlot = $(this).attr('hour-slot');
+            var appt = $(this).children('.textarea');
             var dateRetrieved = moment().format('L'); // todays date on load
             for (var key in prevPlannerResults) {
                 if (prevPlannerResults[key].hr === hrSlot &&
@@ -93,8 +93,8 @@ $(document).ready(function () {
     clearBtn.appendTo(clearRow);
     clearRow.appendTo('.container')
 
-    $('.clearBtn').on("click", function () {
-        localStorage.clear("storedPlanner");
+    $('.clearBtn').on('click', function () {
+        localStorage.clear('storedPlanner');
         location.reload();
     });
 
