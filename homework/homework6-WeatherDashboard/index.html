@@ -17,12 +17,40 @@
 </head>
 
 <body>
-  <main class="container-fluid">
-    <nav class="row navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <header class="row navbar navbar-dark bg-dark">
       <div class="col text-center">
         <h1>Weather Dashboard</h1>
       </div>
-    </nav>
+    </header>
+
+    <section class="row">
+      <div class="col-3 bg-light">
+
+        <div class="row py-2 ml-2">
+          <h4>Search for a City:</h4>
+        </div>
+
+        <div class="row ml-2 w-75">
+          <div class="input-group">
+            <input type="text" class="form-control" id="enter-city" placeholder="Enter a city name here">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button" id="search-city">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row ml-2 py-3">
+          <ul class="list-group" id="prev-searches">
+            <!-- Dynamically updated list here-->
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
 
 
 
@@ -32,7 +60,7 @@
 
 
 
-  </main>
+  </div>
 
   <!-- Jquery, Moment and custom script below-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
