@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // hide the results section on load
-    $('#results').toggleClass('d-none');
+    $('#results').addClass('d-none');
 
     var appID = "d0b9142c750e110a89c37e7297e98e02";
     var today = moment().format('L');
@@ -24,6 +24,7 @@ $(document).ready(function () {
         var cityOf = $(this).text();
         console.log(cityOf);
         if (cityOf != "") {
+ 
             getWeather(cityOf);
         }
         else { // validation checks and prompts
@@ -53,6 +54,7 @@ $(document).ready(function () {
 
     function getWeather(city) {
         var requestUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city +"&units=imperial"+"&APPID=" + appID;
+        $('#current-city').empty();
         //console.log(requestURl);
         fetch(requestUrl)
             .then(function (response) {
@@ -65,7 +67,29 @@ $(document).ready(function () {
                 var cityHumidity = data.main.humidity;
                 var cityWind = data.wind.speed;
                 var cityIcon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-                //console.log(cityIcon);
+                var iconImg = new Image();
+                iconImg.src = cityIcon;
+                var cityTitle = $('<h2>');
+                cityTitle.text(cityName+" ("+today+") ");
+                cityTitle.append(iconImg);
+                $('#current-city').append(cityTitle);
+
+
+                var cityTempTitle = $('<p>');
+                cityTempTitle.text("Temperature: "+cityTemp+" °F");
+                $('#current-city').append(cityTempTitle);
+
+
+                var cityHumidityTitle = $('<p>');
+                cityHumidityTitle.text(cityHumidity+" \%");
+                $('#current-city').append(cityHumidityTitle);
+
+                var cityWindTitle = $('<p>');
+                cityWindTitle.text(cityWind+"\%MPH");
+                $('#current-city').append(cityWindTitle);
+                $('#results').removeClass('d-none');
+
+
             });
     }
 
