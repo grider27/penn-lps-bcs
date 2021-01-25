@@ -39,6 +39,12 @@ THEN the saved events persist
 
 ```
 
+## Finished product with a short video
+
+The video was taken at 8 am hence all slots are green background and in future. Click the link above for a working product live demo.
+
+![day planner final](./product.gif)
+
 ## Original Reference Mock-Up for Final Product
 
 The following animation demonstrates the application functionality:
