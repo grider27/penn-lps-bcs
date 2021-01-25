@@ -4,10 +4,9 @@ $( document ).ready(function() {
 
     var appID = "d0b9142c750e110a89c37e7297e98e02";
     var today = moment().format('L');
-    console.log(today);
+    //console.log(today);
 
-    // load any previous cities
-
+    // load any previous cities searched
     var prevSearches = localStorage.getItem('storedCities');
     if (prevSearches != null) {
         prevSearchesResults = JSON.parse(prevSearches);
@@ -22,9 +21,21 @@ $( document ).ready(function() {
     };
 
     $('#search-city').on('click', function () {
-        // need to add pointer to search ****
         var cityOf = $('#enter-city').val();
-        console.log(cityOf);
+        if (cityOf != ""){
+        $('#enter-city').val("");
+        var liItem = $('<li>');
+        liItem.attr('id','historicalSearches');
+        liItem.addClass('list-group-item');
+        liItem.text(cityOf);
+        $('#prev-searches').append(liItem);
+        }
+        else {
+            alert("Please enter a city name first for the search");
+        }
+
+        // need to add pointer to search ****
+        //console.log(cityOf);
 
         var savedSearhes = JSON.parse(localStorage.getItem('storedCities')) || [];
         savedSearhes.push({ cityOf: cityOf });
