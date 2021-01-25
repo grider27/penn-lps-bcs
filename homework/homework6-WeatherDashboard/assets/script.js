@@ -9,7 +9,6 @@ $(document).ready(function () {
     var prevSearches = localStorage.getItem('storedCities');
     if (prevSearches != null) {
         prevSearchesResults = JSON.parse(prevSearches);
-        //console.log(prevSearchesResults);
         $.each(prevSearchesResults, function (i, val) {
             var liItem = $('<li>');
             liItem.attr('id', 'historicalSearches');
@@ -22,7 +21,6 @@ $(document).ready(function () {
     // initiate search by clicking on any previous searched cities
     $('.list-group-item').on('click', function () {
         var cityOf = $(this).text();
-        console.log(cityOf);
         if (cityOf != "") {
  
             getWeather(cityOf);
@@ -54,14 +52,11 @@ $(document).ready(function () {
 
     function getWeather(city) {
         var requestUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city +"&units=imperial"+"&APPID=" + appID;
-        $('#current-city').empty();
-        //console.log(requestURl);
         fetch(requestUrl)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data); //.wind.speed);
                 var cityName = data.name;
                 var cityTemp = data.main.temp;
                 var cityHumidity = data.main.humidity;
@@ -69,24 +64,12 @@ $(document).ready(function () {
                 var cityIcon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
                 var iconImg = new Image();
                 iconImg.src = cityIcon;
-                var cityTitle = $('<h2>');
-                cityTitle.text(cityName+" ("+today+") ");
-                cityTitle.append(iconImg);
-                $('#current-city').append(cityTitle);
+                $('#city-title').text(cityName+" ("+today+") ");
+                $('#city-title').append(iconImg);
+                $('#city-temp').text("Temperature: "+cityTemp+" °F");
+                $('#city-humidity').text("Humidity: "+cityHumidity+" \%");
+                $('#city-wind').text("Wind Speed: "+cityWind+" MPH");
 
-
-                var cityTempTitle = $('<p>');
-                cityTempTitle.text("Temperature: "+cityTemp+" °F");
-                $('#current-city').append(cityTempTitle);
-
-
-                var cityHumidityTitle = $('<p>');
-                cityHumidityTitle.text(cityHumidity+" \%");
-                $('#current-city').append(cityHumidityTitle);
-
-                var cityWindTitle = $('<p>');
-                cityWindTitle.text(cityWind+"\%MPH");
-                $('#current-city').append(cityWindTitle);
                 $('#results').removeClass('d-none');
 
 
