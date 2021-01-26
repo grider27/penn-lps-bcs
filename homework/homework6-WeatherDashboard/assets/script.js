@@ -22,7 +22,6 @@ $(document).ready(function () {
     $('.list-group-item').on('click', function () {
         var cityOf = $(this).text();
         if (cityOf != "") {
-
             getWeather(cityOf);
         }
         else { // validation checks and prompts
@@ -51,13 +50,13 @@ $(document).ready(function () {
     });
 
     function getWeather(city) {
+        $('#five-day').empty();
         var requestUrlMain = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + appID;
         fetch(requestUrlMain)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
-                //console.log(data);
                 var cityLat = data.coord.lat;
                 var cityLon = data.coord.lon;
                 var cityName = data.name;
@@ -73,14 +72,14 @@ $(document).ready(function () {
                 $('#city-humidity').text("Humidity: " + cityHumidity + " \%");
                 $('#city-wind').text("Wind Speed: " + cityWind + " MPH");
 
+                // second API call to get details on UV and forecast for 5 days from a different end point
                 var requestUrlDtl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&units=imperial" + "&APPID=" + appID;
                 fetch(requestUrlDtl)
                     .then(function (response) {
                         return response.json();
                     })
                     .then(function (detail) {
-                        //console.log(detail);
-                        var cityUvi = detail.current.uvi;
+                        var cityUvi = detail.daily[0].uvi;
                         var cityfuture = detail.daily;
                         //console.log(cityfuture);
                         /* 
@@ -106,31 +105,37 @@ $(document).ready(function () {
                             $('#uv-index').css('background-color', '#B567A4').css('color', 'white');
                         }
 
-                        $.each(cityfuture, function (i, val) { 
+                        $.each(cityfuture, function (i, val) {
                             if (i === 0 || i > 5) return;
-                            console.log(this);
                             var futureDate = moment.unix(this.dt).format("MM/DD/YYYY");
                             var futureTemp = this.temp.day;
-                            var cityHumidity = this.humidity;
-                            console.log(futureDate);
+                            var futureHumidity = this.humidity;
                             var uvIcon = "http://openweathermap.org/img/w/" + this.weather[0].icon + ".png";
                             var uvImg = new Image();
-                            //iconImg.src = cityIcon;
+                            uvImg.src = uvIcon;
 
+                            // dynamic card creation
+                            var cardWeather = $('<div>');
+                            cardWeather.addClass('card bg-primary text-light m-auto');
+                            var cardWeatherBody = $('<div>');
+                            cardWeatherBody.addClass('card-body');
+                            var cardWeatherBodyTitle = $('<h5>');
+                            cardWeatherBodyTitle.text(futureDate);
+
+                            var cardWeatherBodyp1 = $('<p>');
+                            cardWeatherBodyp1.text("Temp: " + futureTemp + " °F");
+                            var cardWeatherBodyp2 = $('<p>');
+                            cardWeatherBodyp2.text("Humidity: " + futureHumidity + " \%");
+
+                            cardWeatherBody.append(cardWeatherBodyTitle);
+                            cardWeatherBody.append(uvImg);
+                            cardWeatherBody.append(cardWeatherBodyp1);
+                            cardWeatherBody.append(cardWeatherBodyp2);
+                            cardWeather.append(cardWeatherBody);
+                            $('#five-day').append(cardWeather);
                         });
-
                     });
-
-
-
-
-
-
                 $('#results').removeClass('d-none');
-
-
             });
     }
-
-
 });
