@@ -51,7 +51,7 @@ $(document).ready(function () {
 
     function getWeather(city) {
         $('#five-day').empty();
-        var requestUrlMain = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + appID;
+        var requestUrlMain = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&APPID=" + appID;
         fetch(requestUrlMain)
             .then(function (response) {
                 return response.json();
@@ -63,7 +63,7 @@ $(document).ready(function () {
                 var cityTemp = data.main.temp;
                 var cityHumidity = data.main.humidity;
                 var cityWind = data.wind.speed;
-                var cityIcon = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+                var cityIcon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
                 var iconImg = new Image();
                 iconImg.src = cityIcon;
                 $('#city-title').text(cityName + " (" + today + ") ");
@@ -110,7 +110,7 @@ $(document).ready(function () {
                             var futureDate = moment.unix(this.dt).format("MM/DD/YYYY");
                             var futureTemp = this.temp.day;
                             var futureHumidity = this.humidity;
-                            var uvIcon = "http://openweathermap.org/img/w/" + this.weather[0].icon + ".png";
+                            var uvIcon = "https://openweathermap.org/img/w/" + this.weather[0].icon + ".png";
                             var uvImg = new Image();
                             uvImg.src = uvIcon;
 
