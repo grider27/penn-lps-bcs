@@ -75,7 +75,8 @@ function writeToFile(fileName, data) {
 function init() {
     inq.prompt(questions).then((data) => {
         //console.log(data)
-        writeToFile("README.md", JSON.stringify(data, null, '\t'));
+        //writeToFile("README.md", JSON.stringify(data, null, '\t'));
+        writeToFile("README.md", genMD(data));
     });
 };
 // Function call to initialize app
