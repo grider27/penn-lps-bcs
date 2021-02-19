@@ -1,10 +1,10 @@
-// TODO: Include packages needed for this application
+// packages needed for this application
 const inq = require('inquirer');
 const fs = require('fs');
 const genMD = require('./utils/generateMarkdown.js');
 
 
-// TODO: Create an array of questions for user input
+// an array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -34,12 +34,12 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Please choose a license for your project from the following:',
-        choices: ["MIT", "GNU GPLv3"],
+        choices: ["MIT", "GNU GPLv3", "Apache License 2.0"],
         validate: (value) => value ? true : "Please choose a license for your project"
     },
     {
         type: 'input',
-        name: 'contribution',
+        name: 'credits',
         message: 'Please enter information of any contributors to your project:',
         validate: (value) => value ? true : "Please enter a proper contributors or enter NA "
     },
@@ -64,20 +64,20 @@ const questions = [
 
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) { 
+// function to write README file
+function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
-    err ? console.log(err) : console.log("Successful creation of a README file! Please check the directory")
+        err ? console.log(err) : console.log("Successful creation of a README file! Please check the directory")
     );
 };
 
-// TODO: Create a function to initialize app
+// function to initialize app
 function init() {
     inq.prompt(questions).then((data) => {
-        //console.log(data)
         //writeToFile("README.md", JSON.stringify(data, null, '\t'));
         writeToFile("README.md", genMD(data));
     });
 };
+
 // Function call to initialize app
 init();
