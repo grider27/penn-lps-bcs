@@ -119,6 +119,7 @@ function generateTeamProfile(data) {
                 </div>
             </section>
         </body>
+        </html>
         `
 }
 
