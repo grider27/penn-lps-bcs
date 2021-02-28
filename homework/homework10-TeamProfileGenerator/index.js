@@ -43,7 +43,7 @@ function getManager() {
         })
 }
 
-// capture manager details
+// capture intern details
 function getIntern() {
     inquirer.prompt(questions.internDetails)
         .then((details) => {
