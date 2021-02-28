@@ -16,7 +16,6 @@ function getEmployeeType() {
         .then((selection) => {
             switch (selection.employee) {
                 case "Manager":
-                    console.log("test worked");
                     getManager();
                     break;
                 case "Engineer":
@@ -30,7 +29,6 @@ function getEmployeeType() {
                     break;
             }
         });
-
 }
 
 // capture manager details
@@ -69,10 +67,10 @@ function getEngineer() {
         })
 }
 
+// generate final html
 function generateHTML() {
-    fs.writeFile("test.txt", JSON.stringify(staff, null, '\t'), (err) =>
-        err ? console.log(err) : console.log("Successful creation of a HTML file! Please check the directory under dist folder")
-    );
+    fs.writeFileSync("./dist/index.html",genHTML(staff));
+    console.log("Successful creation of a HTML file! Please check the directory under dist folder");
 }
 
 // function to initialize app
